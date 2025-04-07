@@ -6,6 +6,7 @@ project(li-po
 
 add_subdirectory(third-party/SDL2 EXCLUDE_FROM_ALL)
 add_subdirectory(third-party/mojoAL EXCLUDE_FROM_ALL)
+add_subdirectory(third-party/mojoshader EXCLUDE_FROM_ALL)
 
 # Lua just uses regular make
 include(ExternalProject)
@@ -43,5 +44,5 @@ if(TARGET SDL2::SDL2main)
    target_link_libraries(li-po PRIVATE SDL2::SDL2main)
 endif()
 
-target_link_libraries(li-po PRIVATE liblua SDL2::SDL2 mojoal)
+target_link_libraries(li-po PRIVATE liblua SDL2::SDL2 mojoal mojoshader)
 
