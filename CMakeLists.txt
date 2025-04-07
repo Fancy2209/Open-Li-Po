@@ -4,6 +4,7 @@ project(li-po VERSION 0.1.0 LANGUAGES C CXX)
 add_subdirectory(third-party/SDL2 EXCLUDE_FROM_ALL)
 add_subdirectory(third-party/mojoAL EXCLUDE_FROM_ALL)
 
+# Lua just uses regular make
 include(ExternalProject)
 ExternalProject_Add(lua
    SOURCE_DIR ${CMAKE_CURRENT_SOURCE_DIR}/third-party/lua-4.0.1
@@ -13,14 +14,12 @@ ExternalProject_Add(lua
    BUILD_IN_SOURCE true
    INSTALL_COMMAND ""
 )
-
 add_library(liblua STATIC IMPORTED)
-
 if(WIN32)
-set(LUA_LIB_PATH ${CMAKE_CURRENT_SOURCE_DIR}/third-party/lua-4.0.1/lib/liblua.lib)
-else(WIN32)
-set(LUA_LIB_PATH ${CMAKE_CURRENT_SOURCE_DIR}/third-party/lua-4.0.1/lib/liblua.a)
-endif(WIN32)
+   set(LUA_LIB_PATH ${CMAKE_CURRENT_SOURCE_DIR}/third-party/lua-4.0.1/lib/liblua.lib)
+else()
+   set(LUA_LIB_PATH ${CMAKE_CURRENT_SOURCE_DIR}/third-party/lua-4.0.1/lib/liblua.a)
+endif()
 set_target_properties(liblua PROPERTIES
     IMPORTED_LOCATION ${LUA_LIB_PATH}
     INTERFACE_INCLUDE_DIRECTORIES ${CMAKE_CURRENT_SOURCE_DIR}/third-party/lua-4.0.1/src
