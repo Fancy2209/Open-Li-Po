@@ -1,5 +1,8 @@
 cmake_minimum_required(VERSION 3.0.0)
-project(li-po VERSION 0.1.0 LANGUAGES C CXX)
+project(li-po 
+   VERSION 0.1.0 
+   LANGUAGES C CXX
+)
 
 add_subdirectory(third-party/SDL2 EXCLUDE_FROM_ALL)
 add_subdirectory(third-party/mojoAL EXCLUDE_FROM_ALL)
@@ -25,7 +28,8 @@ set_target_properties(liblua PROPERTIES
     INTERFACE_INCLUDE_DIRECTORIES ${CMAKE_CURRENT_SOURCE_DIR}/third-party/lua-4.0.1/src
 )
 
-add_executable(lua-test
+# Insert new source files here.
+add_executable(li-po
         src/main.cpp
 )
 
