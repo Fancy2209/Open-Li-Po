@@ -15,7 +15,12 @@ ExternalProject_Add(lua
 )
 
 add_library(liblua STATIC IMPORTED)
+
+if(WIN32)
+set(LUA_LIB_PATH ${CMAKE_CURRENT_SOURCE_DIR}/third-party/lua-4.0.1/lib/liblua.lib)
+else(WIN32)
 set(LUA_LIB_PATH ${CMAKE_CURRENT_SOURCE_DIR}/third-party/lua-4.0.1/lib/liblua.a)
+endif(WIN32)
 set_target_properties(liblua PROPERTIES
     IMPORTED_LOCATION ${LUA_LIB_PATH}
     INTERFACE_INCLUDE_DIRECTORIES ${CMAKE_CURRENT_SOURCE_DIR}/third-party/lua-4.0.1/src
