@@ -1,3 +1,5 @@
 build/
 *.a
 *.o
+bin/lua
+bin/luac
