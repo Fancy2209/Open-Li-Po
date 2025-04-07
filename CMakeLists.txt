@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.0.0)
-project(lua-test VERSION 0.1.0 LANGUAGES C CXX)
+project(li-po VERSION 0.1.0 LANGUAGES C CXX)
 
 add_subdirectory(third-party/SDL2 EXCLUDE_FROM_ALL)
 add_subdirectory(third-party/mojoAL EXCLUDE_FROM_ALL)
@@ -27,7 +27,7 @@ add_executable(lua-test
 
 if(TARGET SDL2::SDL2main)
     # It has an implicit dependency on SDL2 functions, so it MUST be added before SDL2::SDL2 (or SDL2::SDL2-static)
-    target_link_libraries(lua-test PRIVATE SDL2::SDL2main)
+    target_link_libraries(li-po PRIVATE SDL2::SDL2main)
 endif()
-target_link_libraries(lua-test PRIVATE liblua SDL2::SDL2 mojoal)
+target_link_libraries(li-po PRIVATE liblua SDL2::SDL2 mojoal)
 
