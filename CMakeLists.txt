@@ -4,15 +4,15 @@ project(li-po
    LANGUAGES C CXX
 )
 
-add_subdirectory(third-party/SDL2 EXCLUDE_FROM_ALL)
-add_subdirectory(third-party/mojoAL EXCLUDE_FROM_ALL)
-add_subdirectory(third-party/mojoshader EXCLUDE_FROM_ALL)
+add_subdirectory(Source/CommonLibs/NonDF/SDL2 EXCLUDE_FROM_ALL)
+add_subdirectory(Source/CommonLibs/NonDF/mojoAL EXCLUDE_FROM_ALL)
+add_subdirectory(Source/CommonLibs/NonDF/mojoshader EXCLUDE_FROM_ALL)
 
 # Lua just uses regular make
 include(ExternalProject)
 
 ExternalProject_Add(lua
-   SOURCE_DIR ${CMAKE_CURRENT_SOURCE_DIR}/third-party/lua-4.0.1
+   SOURCE_DIR ${CMAKE_CURRENT_SOURCE_DIR}/Source/CommonLibs/NonDF/lua-4.0.1
    CONFIGURE_COMMAND ""
    BUILD_COMMAND make
    BUILD_ALWAYS true
@@ -24,19 +24,19 @@ add_library(liblua STATIC IMPORTED)
 
 # Windows is a special boy who has a different static lib extension
 if(WIN32)
-   set(LUA_LIB_PATH ${CMAKE_CURRENT_SOURCE_DIR}/third-party/lua-4.0.1/lib/liblua.lib)
+   set(LUA_LIB_PATH ${CMAKE_CURRENT_SOURCE_DIR}/Source/CommonLibs/NonDF/lua-4.0.1/lib/liblua.lib)
 else()
-   set(LUA_LIB_PATH ${CMAKE_CURRENT_SOURCE_DIR}/third-party/lua-4.0.1/lib/liblua.a)
+   set(LUA_LIB_PATH ${CMAKE_CURRENT_SOURCE_DIR}/Source/CommonLibs/NonDF/lua-4.0.1/lib/liblua.a)
 endif()
 
 set_target_properties(liblua PROPERTIES
    IMPORTED_LOCATION ${LUA_LIB_PATH}
-   INTERFACE_INCLUDE_DIRECTORIES ${CMAKE_CURRENT_SOURCE_DIR}/third-party/lua-4.0.1/src
+   INTERFACE_INCLUDE_DIRECTORIES ${CMAKE_CURRENT_SOURCE_DIR}/Source/CommonLibs/NonDF/lua-4.0.1/src
 )
 
 # Insert new source files here.
 add_executable(li-po
-   src/main.cpp
+   Source/game/luatest/UnixMain.cpp
 )
 
 if(TARGET SDL2::SDL2main)
@@ -44,5 +44,5 @@ if(TARGET SDL2::SDL2main)
    target_link_libraries(li-po PRIVATE SDL2::SDL2main)
 endif()
 
-target_link_libraries(li-po PRIVATE liblua SDL2::SDL2 mojoal mojoshader)
+target_link_libraries(li-po PRIVATE liblua mojoal mojoshader SDL2::SDL2 )
 
