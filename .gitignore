@@ -3,3 +3,4 @@ build/
 *.o
 bin/lua
 bin/luac
+.vscode/settings.json
