@@ -1,6 +1,6 @@
 #include "PCGameApp.h"
 
-PCGameApp::PCGameApp() : GameApp() 
+PCGameApp::PCGameApp(): GameApp() 
 {
 };
 
@@ -11,7 +11,6 @@ PCGameApp::~PCGameApp()
 void PCGameApp::ParseCommandLine(int argc, char **argv)
 {
 };
-
 
 bool PCGameApp::StartUp(void *param_1)
 {
@@ -37,7 +36,20 @@ bool PCGameApp::StartUp(void *param_1)
     return true;
 }
 
-void PCGameApp::Shutdown() {};
-bool PCGameApp::InitFrame() { return true; };
-bool PCGameApp::RenderFrame() { return true; };
-bool PCGameApp::EndFrame() { return true; };
+void PCGameApp::Shutdown() 
+{
+
+};
+
+bool PCGameApp::InitFrame() { 
+    return true; 
+};
+
+bool PCGameApp::RenderFrame() { 
+    return true; 
+};
+
+bool PCGameApp::EndFrame() 
+{ 
+    return true; 
+};

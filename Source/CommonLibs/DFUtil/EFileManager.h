@@ -11,8 +11,8 @@ class EFileManager
         EFileManager();
 	    ~EFileManager();
 
-        void AddFilePackage(const char *file){};
-        void AddReadPath(const char *path, bool param1){};
-        void SetWritePath(const char *path){};
+        void AddFilePackage(const char *file);
+        void AddReadPath(const char *path, bool param1);
+        void SetWritePath(const char *path);
 
 };

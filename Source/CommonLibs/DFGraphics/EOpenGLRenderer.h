@@ -5,6 +5,6 @@ class EOpenGLRenderer
     private:
         //
     public:
-        EOpenGLRenderer(/* args */);
+        EOpenGLRenderer();
         ~EOpenGLRenderer();
 };
