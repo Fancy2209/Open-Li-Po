@@ -6,7 +6,6 @@ project(li-po
 set (CMAKE_CXX_STANDARD 98)
 
 add_subdirectory(Source/CommonLibs/NonDF/SDL2 EXCLUDE_FROM_ALL)
-add_subdirectory(Source/CommonLibs/NonDF/mojoAL EXCLUDE_FROM_ALL)
 add_subdirectory(Source/CommonLibs/NonDF/mojoshader EXCLUDE_FROM_ALL)
 
 # Lua just uses regular make
@@ -397,4 +396,4 @@ if(TARGET SDL2::SDL2main)
    target_link_libraries(li-po PRIVATE SDL2::SDL2main)
 endif()
 
-target_link_libraries(li-po PRIVATE liblua mojoal mojoshader SDL2::SDL2 )
+target_link_libraries(li-po PRIVATE liblua mojoshader SDL2::SDL2 )
