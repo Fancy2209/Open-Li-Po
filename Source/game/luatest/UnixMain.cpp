@@ -2,7 +2,9 @@
 #include <stdlib.h>
 #include <string.h>
 #ifndef __WIN32__
-#include <unistd.h>
+#include <unistd.h> // getcwd
+#else
+#include <direct.h> // _getcwd
 #endif
 #include "SDL2/SDL.h"
 #include "UnixMain.h"
@@ -62,7 +64,11 @@ int main(int argc, char **argv) {
       if (wasStartupSuccessful != false) {
         // g_ErrorManager->TraceMessagef("UnixMain: StartUp successful..");
         printf("UnixMain: StartUp successful..");
+#ifndef __WIN32__
         if (getcwd(cwdBuf, 4096) == NULL) {
+#else
+        if (_getcwd(cwdBuf, 4096) == NULL) {
+#endif
           // g_ErrorManager->TraceMessagef("Unable to get working directory!");
           printf("Unable to get working directory!");
           snprintf(cwdBuf, 4096, "unknown");
