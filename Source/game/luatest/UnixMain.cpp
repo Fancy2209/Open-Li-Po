@@ -3,7 +3,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#ifndef __WIN32__
+#ifndef _WIN32
 #include <unistd.h> // getcwd
 #else
 #include <direct.h> // _getcwd
