@@ -3,7 +3,7 @@ project(li-po
    VERSION 0.1.0
    LANGUAGES C CXX
 )
-set (CMAKE_CXX_STANDARD 98)
+set (CMAKE_CXX_STANDARD 11)
 
 add_subdirectory(Source/CommonLibs/NonDF/SDL2 EXCLUDE_FROM_ALL)
 add_subdirectory(Source/CommonLibs/NonDF/mojoshader EXCLUDE_FROM_ALL)
