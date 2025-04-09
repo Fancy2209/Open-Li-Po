@@ -4,7 +4,7 @@
 
 extern PCGameApp *gpApp;
 extern EFileManager *gFile_dfutil;
-//extern EErrorManager *g_ErrorManager; // TODO: Actually implement the EErrorManager instead of using printf
+extern EErrorManager *g_ErrorManager; // TODO: Actually implement the EErrorManager instead of using printf
 extern void *g_pEmergencyMemory;
 extern const char *g_mainWindowCaption;
 extern const char *g_mainWindowCaptionSmall;
