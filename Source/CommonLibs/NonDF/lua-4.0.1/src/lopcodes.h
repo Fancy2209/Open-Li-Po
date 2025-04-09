@@ -146,11 +146,18 @@ OP_FORLOOP,/*	J							*/
 OP_LFORPREP,/*	J							*/
 OP_LFORLOOP,/*	J							*/
 
-OP_CLOSURE/*	A B	v_b-v_1		closure(KPROTO[a], v_1-v_b)	*/
+OP_CLOSURE,/*	A B	v_b-v_1		closure(KPROTO[a], v_1-v_b)	*/
+
+/* Double Fine Lua */
+
+OP_SPECIALU = 49,
+OP_SPECIALS = 50,
+OP_SCALL = 51,
+OP_SCLOSURE = 52
 
 } OpCode;
 
-#define NUM_OPCODES	((int)OP_CLOSURE+1)
+#define NUM_OPCODES	((int)OP_SCLOSURE+1)
 
 
 #define ISJUMP(o)	(OP_JMPNE <= (o) && (o) <= OP_JMP)

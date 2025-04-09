@@ -448,6 +448,9 @@ int luaK_code2 (FuncState *fs, OpCode o, int arg1, int arg2) {
   int delta = luaK_opproperties[o].push - luaK_opproperties[o].pop;
   int optm = 0;  /* 1 when there is an optimization */
   switch (o) {
+    case OP_SCLOSURE: {
+      delta = 1 - arg1;
+    }
     case OP_CLOSURE: {
       delta = -arg2+1;
       break;
@@ -696,6 +699,10 @@ const struct OpProperties luaK_opproperties[NUM_OPCODES] = {
   {iS, 0, 3},	/* OP_FORLOOP */
   {iS, 2, 0},	/* OP_LFORPREP */
   {iS, 0, 3},	/* OP_LFORLOOP */
-  {iAB, VD, 0}	/* OP_CLOSURE */
+  {iAB, VD, 0},	/* OP_CLOSURE */
+  {iU, 0, 0}, /* OP_SPECIALU */
+  {iS, 0, 0}, /* OP_SPECIALS */
+  {iAB, 0, 0}, /* OP_SCALL */
+  {iU, VD, 0} /* OP_SCLOSURE */
 };
 
