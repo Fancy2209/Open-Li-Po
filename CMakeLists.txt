@@ -45,7 +45,7 @@ add_executable(li-po
    Source/CommonLibs/NonDF/ISACTEng/SoundRandomizer.cpp
    Source/CommonLibs/NonDF/ISACTEng/SoundQueue.h
 
-   Source/CommonLibs/NonDF/mojoAL/mojoAL.c
+   Source/CommonLibs/NonDF/mojoAL/mojoal.c
 
    Source/CommonLibs/NonDF/AudioDrv/AudioDrv.cpp
    Source/CommonLibs/NonDF/AudioDrv/Source.h
