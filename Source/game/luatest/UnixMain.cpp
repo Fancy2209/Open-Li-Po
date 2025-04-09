@@ -1,3 +1,5 @@
+#include "SDL2/SDL.h"
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -6,7 +8,6 @@
 #else
 #include <direct.h> // _getcwd
 #endif
-#include "SDL2/SDL.h"
 #include "UnixMain.h"
 
 PCGameApp *gpApp;
