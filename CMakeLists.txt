@@ -9,7 +9,7 @@ add_subdirectory(Source/CommonLibs/NonDF/SDL2 EXCLUDE_FROM_ALL)
 add_subdirectory(Source/CommonLibs/NonDF/mojoshader EXCLUDE_FROM_ALL)
 
 # Lua 
-add_library(liblua static
+add_library(liblua STATIC
    Source/CommonLibs/NonDF/lua-4.0.1/src/lapi.c 
    Source/CommonLibs/NonDF/lua-4.0.1/src/lcode.c 
    Source/CommonLibs/NonDF/lua-4.0.1/src/ldebug.c 
@@ -30,7 +30,7 @@ add_library(liblua static
    Source/CommonLibs/NonDF/lua-4.0.1/src/lzio.c
 )
 
-add_library(mojoal static Source/CommonLibs/NonDF/mojoAL/mojoal.c)
+add_library(mojoal STATIC Source/CommonLibs/NonDF/mojoAL/mojoal.c)
 
 # Insert new source files here.
 add_executable(li-po
