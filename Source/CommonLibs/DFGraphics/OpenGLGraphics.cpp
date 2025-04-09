@@ -14,6 +14,7 @@ ERenderer::~ERenderer()
 
 bool ERenderer::initPlatform(void *hWnd, unsigned int param_2)
 {
+    return true;
 };
 
 EOpenGLRenderer::EOpenGLRenderer()
