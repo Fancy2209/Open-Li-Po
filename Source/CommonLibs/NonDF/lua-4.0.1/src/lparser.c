@@ -294,10 +294,22 @@ static void pushclosure (LexState *ls, FuncState *func) {
   int i;
   for (i=0; i<func->nupvalues; i++)
     luaK_tostack(ls, &func->upvalues[i], 1);
-  luaM_growvector(ls->L, f->kproto, f->nkproto, 1, Proto *,
-                  "constant table overflow", MAXARG_A);
-  f->kproto[f->nkproto++] = func->f;
-  luaK_code2(fs, OP_CLOSURE, f->nkproto-1, func->nupvalues);
+  if (f->nkproto + 1 < 31)
+  {
+      luaM_growvector(ls->L, f->kproto, f->nkproto, 1, Proto*,
+          "constant table overflow", MAXARG_A);
+      f->kproto[f->nkproto++] = func->f;
+      luaK_code2(fs, OP_CLOSURE, f->nkproto - 1, func->nupvalues);
+  }
+  else
+  {
+      //Hit max closures. Start producing our special closures.
+      luaM_growvector(ls->L, f->kproto, f->nkproto, 1, Proto*,
+          "proto overflow", 1023);
+	  f->kproto[f->nkproto++] = func->f;
+      luaK_code1(fs, OP_SPECIALU, f->nkproto - 1); /* Push special uint */
+	  luaK_code1(fs, OP_SCLOSURE, func->nupvalues); /* Special uint closure */
+  }
 }
 
 
@@ -415,7 +427,15 @@ static void funcargs (LexState *ls, int slf) {
     }
   }
   fs->stacklevel = slevel;  /* call will remove function and arguments */
-  luaK_code2(fs, OP_CALL, slevel, MULT_RET);
+  if (slevel < 32)
+  {
+      luaK_code2(fs, OP_CALL, slevel, MULT_RET);
+  }
+  else
+  {
+      luaK_code1(fs, OP_SPECIALU, slevel);
+      luaK_code2(fs, OP_SCALL, 0, MULT_RET);
+  }
 }
 
 

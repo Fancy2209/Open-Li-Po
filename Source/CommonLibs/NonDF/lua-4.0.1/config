@@ -7,7 +7,7 @@
 
 # Lua uses double for numbers. To change this, uncomment one of the lines below.
 #NUMBER= -DLUA_NUM_TYPE=double
-#NUMBER= -DLUA_NUM_TYPE=float
+NUMBER= -DLUA_NUM_TYPE=float
 #NUMBER= -DLUA_NUM_TYPE=long
 # Optionally, you may also want change how numbers are converted to strings,
 # and vice-versa. Look for LUA_NUMBER in llimits.h and in the rest of the code.
