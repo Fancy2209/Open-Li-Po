@@ -46,6 +46,8 @@ add_executable(li-po
    Source/CommonLibs/NonDF/ISACTEng/SoundRandomizer.cpp
    Source/CommonLibs/NonDF/ISACTEng/SoundQueue.h
 
+   Source/CommonLibs/NonDF/mojoAL/mojoAL.c
+
    Source/CommonLibs/NonDF/AudioDrv/AudioDrv.cpp
    Source/CommonLibs/NonDF/AudioDrv/Source.h
    Source/CommonLibs/NonDF/AudioDrv/Buffer.cpp
@@ -383,7 +385,12 @@ add_executable(li-po
    Source/game/luatest/DFConsole.cpp
    Source/game/luatest/UnixMain.cpp
 )
-target_include_directories(li-po PUBLIC Source/CommonLibs Source/game/luatest/)
+
+target_include_directories(li-po PUBLIC 
+   Source/CommonLibs 
+   Source/game/luatest
+   Source/CommonLibs/NonDF/mojoAL/AL
+)
 
 if(TARGET SDL2::SDL2main)
    # SDL2main has an implicit dependency on SDL2 functions, so it MUST be added before SDL2::SDL2 (or SDL2::SDL2-static)
