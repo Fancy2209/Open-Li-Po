@@ -29,8 +29,15 @@ add_library(liblua STATIC
    Source/CommonLibs/NonDF/lua-4.0.1/src/lvm.c 
    Source/CommonLibs/NonDF/lua-4.0.1/src/lzio.c
 )
+target_include_directories(lua PUBLIC 
+   Source/CommonLibs/NonDF/lua-4.0.1/src
+   Source/CommonLibs/NonDF/lua-4.0.1/include
+)
 
 add_library(mojoal STATIC Source/CommonLibs/NonDF/mojoAL/mojoal.c)
+target_include_directories(mojoal PUBLIC 
+   Source/CommonLibs/NonDF/lua-4.0.1/include
+)
 
 # Insert new source files here.
 add_executable(li-po
