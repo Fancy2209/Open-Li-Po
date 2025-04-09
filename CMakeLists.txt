@@ -29,7 +29,7 @@ add_library(liblua STATIC
    Source/CommonLibs/NonDF/lua-4.0.1/src/lvm.c 
    Source/CommonLibs/NonDF/lua-4.0.1/src/lzio.c
 )
-target_include_directories(lua PUBLIC 
+target_include_directories(liblua PUBLIC 
    Source/CommonLibs/NonDF/lua-4.0.1/src
    Source/CommonLibs/NonDF/lua-4.0.1/include
 )
