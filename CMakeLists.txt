@@ -8,31 +8,29 @@ set (CMAKE_CXX_STANDARD 98)
 add_subdirectory(Source/CommonLibs/NonDF/SDL2 EXCLUDE_FROM_ALL)
 add_subdirectory(Source/CommonLibs/NonDF/mojoshader EXCLUDE_FROM_ALL)
 
-# Lua just uses regular make
-include(ExternalProject)
-
-ExternalProject_Add(lua
-   SOURCE_DIR ${CMAKE_CURRENT_SOURCE_DIR}/Source/CommonLibs/NonDF/lua-4.0.1
-   CONFIGURE_COMMAND ""
-   BUILD_COMMAND make
-   BUILD_ALWAYS true
-   BUILD_IN_SOURCE true
-   INSTALL_COMMAND ""
+# Lua 
+add_library(liblua static
+   Source/CommonLibs/NonDF/lua-4.0.1/src/lapi.c 
+   Source/CommonLibs/NonDF/lua-4.0.1/src/lcode.c 
+   Source/CommonLibs/NonDF/lua-4.0.1/src/ldebug.c 
+   Source/CommonLibs/NonDF/lua-4.0.1/src/ldo.c 
+   Source/CommonLibs/NonDF/lua-4.0.1/src/lfunc.c 
+   Source/CommonLibs/NonDF/lua-4.0.1/src/lgc.c 
+   Source/CommonLibs/NonDF/lua-4.0.1/src/llex.c 
+   Source/CommonLibs/NonDF/lua-4.0.1/src/lmem.c
+   Source/CommonLibs/NonDF/lua-4.0.1/src/lobject.c 
+   Source/CommonLibs/NonDF/lua-4.0.1/src/lparser.c 
+   Source/CommonLibs/NonDF/lua-4.0.1/src/lstate.c 
+   Source/CommonLibs/NonDF/lua-4.0.1/src/lstring.c 
+   Source/CommonLibs/NonDF/lua-4.0.1/src/ltable.c 
+   Source/CommonLibs/NonDF/lua-4.0.1/src/ltests.c
+   Source/CommonLibs/NonDF/lua-4.0.1/src/ltm.c 
+   Source/CommonLibs/NonDF/lua-4.0.1/src/lundump.c 
+   Source/CommonLibs/NonDF/lua-4.0.1/src/lvm.c 
+   Source/CommonLibs/NonDF/lua-4.0.1/src/lzio.c
 )
 
-add_library(liblua STATIC IMPORTED)
-
-# Windows is a special boy who has a different static lib extension
-if(WIN32)
-   set(LUA_LIB_PATH ${CMAKE_CURRENT_SOURCE_DIR}/Source/CommonLibs/NonDF/lua-4.0.1/lib/liblua.lib)
-else()
-   set(LUA_LIB_PATH ${CMAKE_CURRENT_SOURCE_DIR}/Source/CommonLibs/NonDF/lua-4.0.1/lib/liblua.a)
-endif()
-
-set_target_properties(liblua PROPERTIES
-   IMPORTED_LOCATION ${LUA_LIB_PATH}
-   INTERFACE_INCLUDE_DIRECTORIES ${CMAKE_CURRENT_SOURCE_DIR}/Source/CommonLibs/NonDF/lua-4.0.1/src
-)
+add_library(mojoal static Source/CommonLibs/NonDF/mojoAL/mojoal.c)
 
 # Insert new source files here.
 add_executable(li-po
@@ -44,8 +42,6 @@ add_executable(li-po
    Source/CommonLibs/NonDF/ISACTEng/Array.h
    Source/CommonLibs/NonDF/ISACTEng/SoundRandomizer.cpp
    Source/CommonLibs/NonDF/ISACTEng/SoundQueue.h
-
-   Source/CommonLibs/NonDF/mojoAL/mojoal.c
 
    Source/CommonLibs/NonDF/AudioDrv/AudioDrv.cpp
    Source/CommonLibs/NonDF/AudioDrv/Source.h
@@ -389,6 +385,7 @@ target_include_directories(li-po PUBLIC
    Source/CommonLibs 
    Source/game/luatest
    Source/CommonLibs/NonDF/mojoAL/AL
+   Source/CommonLibs/NonDF/lua-4.0.1/include
 )
 
 if(TARGET SDL2::SDL2main)
@@ -396,4 +393,4 @@ if(TARGET SDL2::SDL2main)
    target_link_libraries(li-po PRIVATE SDL2::SDL2main)
 endif()
 
-target_link_libraries(li-po PRIVATE liblua mojoshader SDL2::SDL2 )
+target_link_libraries(li-po PRIVATE liblua mojoal mojoshader SDL2::SDL2)
