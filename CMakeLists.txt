@@ -36,8 +36,8 @@ target_include_directories(liblua PUBLIC
 
 add_library(mojoal STATIC Source/CommonLibs/NonDF/mojoAL/mojoal.c)
 target_include_directories(mojoal PUBLIC 
-   Source/CommonLibs/NonDF/mojoAL/include
-   Source/CommonLibs/NonDF/mojoAL/include/AL
+   Source/CommonLibs/NonDF/mojoAL
+   Source/CommonLibs/NonDF/mojoAL/AL
 )
 
 # Insert new source files here.
