@@ -25,7 +25,7 @@
 
 #include "al.h"
 #include "alc.h"
-#include "SDL2/SDL.h"
+#include "SDL.h"
 
 /* This is for debugging and/or pulling the fire alarm. */
 #define FORCE_SCALAR_FALLBACK 0

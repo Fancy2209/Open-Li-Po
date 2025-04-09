@@ -7,6 +7,7 @@ set (CMAKE_CXX_STANDARD 98)
 
 add_subdirectory(Source/CommonLibs/NonDF/SDL2 EXCLUDE_FROM_ALL)
 add_subdirectory(Source/CommonLibs/NonDF/mojoshader EXCLUDE_FROM_ALL)
+add_subdirectory(Source/CommonLibs/NonDF/mojoAL EXCLUDE_FROM_ALL)
 
 # Lua 
 add_library(liblua STATIC
@@ -32,12 +33,6 @@ add_library(liblua STATIC
 target_include_directories(liblua PUBLIC 
    Source/CommonLibs/NonDF/lua-4.0.1/src
    Source/CommonLibs/NonDF/lua-4.0.1/include
-)
-
-add_library(mojoal STATIC Source/CommonLibs/NonDF/mojoAL/mojoal.c)
-target_include_directories(mojoal PUBLIC 
-   Source/CommonLibs/NonDF/mojoAL
-   Source/CommonLibs/NonDF/mojoAL/AL
 )
 
 # Insert new source files here.
@@ -392,7 +387,7 @@ add_executable(li-po
 target_include_directories(li-po PUBLIC 
    Source/CommonLibs 
    Source/game/luatest
-   Source/CommonLibs/NonDF/mojoAL/AL
+   Source/CommonLibs/NonDF/mojoAL
    Source/CommonLibs/NonDF/lua-4.0.1/include
 )
 
