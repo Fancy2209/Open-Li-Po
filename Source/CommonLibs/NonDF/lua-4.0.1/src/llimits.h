@@ -36,7 +36,7 @@
 ** GREP LUA_NUMBER to change that
 */
 #ifndef LUA_NUM_TYPE
-#define LUA_NUM_TYPE double
+#define LUA_NUM_TYPE float
 #endif
 
 typedef LUA_NUM_TYPE Number;
