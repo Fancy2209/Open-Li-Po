@@ -75,7 +75,6 @@ add_executable(li-po
    Source/CommonLibs/DFUtil/String.cpp
    Source/CommonLibs/DFUtil/HandleAllocator.cpp
    Source/CommonLibs/DFUtil/Profiler.cpp
-   Source/CommonLibs/DFUtil/EErrorManager.cpp
 
    Source/CommonLibs/DFMath/MathGeneral.cpp
    Source/CommonLibs/DFMath/Matrix.cpp

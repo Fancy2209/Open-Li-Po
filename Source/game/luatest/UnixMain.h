@@ -1,5 +1,5 @@
 #include "DFUtil/EFileManager.h"
-#include "DFUtil/EErrorManager.h"
+#include "DFUtil/ErrorManager.h"
 #include "Game/PCGameApp.h"
 
 extern PCGameApp *gpApp;
