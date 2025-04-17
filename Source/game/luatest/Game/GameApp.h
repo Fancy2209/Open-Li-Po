@@ -1,15 +1,21 @@
 #pragma once
+#include "DFGraphics/ERenderer.h"
 
 class GameApp
 {
-    public:
-        GameApp();
-	    ~GameApp();
+private:
+    GameApp *gGameApp;
+    ERenderer *m_pRenderer;
 
-        bool StartUp(void *param_1);
-        void Shutdown();
+public:
+    GameApp();
+    ~GameApp();
 
-        bool InitFrame();
-        bool RenderFrame();
-        bool EndFrame();
+    bool StartUp(void *param_1);
+    void Shutdown();
+
+    void InitRender(void *param_1);
+    bool InitFrame();
+    bool RenderFrame();
+    bool EndFrame();
 };

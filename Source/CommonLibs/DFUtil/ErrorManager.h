@@ -30,8 +30,8 @@ enum TRACETYPE
 	TRACE_MAX
 };
 
-typedef void (*NonFatalErrorHandler)(char* pszMessage);
-typedef void (*ConsoleCallback)(char* pszMessage);
+typedef void (*NonFatalErrorHandler)(const char* pszMessage);
+typedef void (*ConsoleCallback)(const char* pszMessage);
 typedef void (*ContextCallback)(void);
 typedef void (*ShutdownCallback)(void);
 
@@ -43,7 +43,7 @@ class EErrorManager
 		class FTraceInfo
 		{
 		public:
-			char* m_pszName;
+			const char* m_pszName;
 			bool m_bEnabled;
 
 			FTraceInfo()
@@ -69,10 +69,10 @@ class EErrorManager
 
 		void SetEnabled(TRACETYPE traceType, bool bEnabled);
 
-		void SafeOutputDebugString(char* pszMessage);
+		void SafeOutputDebugString(const char* pszMessage);
 
-		void TraceMessage(char* pszMessage);
-        void TraceMessagef(TRACETYPE traceType, char* pszMessage, ...);
-        void TraceMessagef(char* pszMessage, ...);
-		void TraceMessagev(TRACETYPE traceType, char* pszMessage, va_list args);
+		void TraceMessage(const char* pszMessage);
+        void TraceMessagef(TRACETYPE traceType, const char* pszMessage, ...);
+        void TraceMessagef(const char* pszMessage, ...);
+		void TraceMessagev(TRACETYPE traceType, const char* pszMessage, va_list args);
 };

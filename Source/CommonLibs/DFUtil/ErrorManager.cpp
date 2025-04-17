@@ -44,7 +44,7 @@ void EErrorManager::SetEnabled(TRACETYPE traceType, bool bEnabled)
 	m_TraceInfo[traceType].m_bEnabled = bEnabled;
 }
 
-void OutputDebugString(char* pszString)
+void OutputDebugString(const char* pszString)
 {
 	if (pszString != nullptr && *pszString != '\0')
 	{
@@ -52,7 +52,7 @@ void OutputDebugString(char* pszString)
 	}
 }
 
-void EErrorManager::SafeOutputDebugString(char* pszMessage)
+void EErrorManager::SafeOutputDebugString(const char* pszMessage)
 {
 	if (sm_iInhibitDebugString == 0)
 	{
@@ -64,7 +64,7 @@ void EErrorManager::SafeOutputDebugString(char* pszMessage)
 	}
 }
 
-void EErrorManager::TraceMessage(char* pszMessage)
+void EErrorManager::TraceMessage(const char* pszMessage)
 {
 	if (m_pConsoleCallback == nullptr)
 	{
@@ -77,7 +77,7 @@ void EErrorManager::TraceMessage(char* pszMessage)
 	}
 }
 
-void EErrorManager::TraceMessagef(TRACETYPE traceType, char* pszMessage, ...)
+void EErrorManager::TraceMessagef(TRACETYPE traceType, const char* pszMessage, ...)
 {
 	va_list args;
 	va_start(args, pszMessage);
@@ -85,7 +85,7 @@ void EErrorManager::TraceMessagef(TRACETYPE traceType, char* pszMessage, ...)
 	va_end(args);
 }
 
-void EErrorManager::TraceMessagef(char* pszMessage, ...)
+void EErrorManager::TraceMessagef(const char* pszMessage, ...)
 {
 	va_list args;
 	va_start(args, pszMessage);
@@ -93,7 +93,7 @@ void EErrorManager::TraceMessagef(char* pszMessage, ...)
 	va_end(args);
 }
 
-void EErrorManager::TraceMessagev(TRACETYPE traceType, char* pszMessage, va_list args)
+void EErrorManager::TraceMessagev(TRACETYPE traceType, const char* pszMessage, va_list args)
 {
 	if (!IsEnabled(traceType))
 		return;
