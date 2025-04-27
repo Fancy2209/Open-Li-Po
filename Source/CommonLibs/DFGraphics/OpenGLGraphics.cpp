@@ -25,7 +25,7 @@ bool ERenderer::Init(void *hWnd, unsigned int param_2)
     {
         //TODO lots of init here
 
-        return true;d
+        return true;
     }
     return false;
 };
