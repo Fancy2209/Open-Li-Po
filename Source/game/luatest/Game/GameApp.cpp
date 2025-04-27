@@ -15,13 +15,13 @@ bool GameApp::StartUp(void *param_1)
 { 
     // EProfileOneShot::EProfileOneShot(local_d8,"Start Up");
     gGameApp = this;
-    g_ErrorManager->SetEnabled(ACTN, false);
-    g_ErrorManager->SetEnabled(SOUND, false);
-    g_ErrorManager->SetEnabled(CAM, false);
-    g_ErrorManager->SetEnabled(MESH, false);
-    g_ErrorManager->SetEnabled(ANIM, true);
+    g_ErrorManager->SetEnabled(TT_ACTN, false);
+    g_ErrorManager->SetEnabled(TT_SOUND, false);
+    g_ErrorManager->SetEnabled(TT_CAM, false);
+    g_ErrorManager->SetEnabled(TT_MESH, false);
+    g_ErrorManager->SetEnabled(TT_ANIM, true);
     // ReadPrefs
-    g_ErrorManager->SetEnabled(STEAM, true);
+    g_ErrorManager->SetEnabled(TT_STEAM, true);
 
     // TODO: Language Stuff
 
