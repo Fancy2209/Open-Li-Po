@@ -19,8 +19,15 @@ ERenderer::~ERenderer()
 
 bool ERenderer::Init(void *hWnd, unsigned int param_2)
 {
+	//todo: assert g_pCurrentRenderer == nullptr
     g_pCurrentRenderer = this;
-    return true;
+    if (initPlatform(hWnd, param_2))
+    {
+        //TODO lots of init here
+
+        return true;d
+    }
+    return false;
 };
 
 bool ERenderer::initPlatform(void *hWnd, unsigned int param_2)
