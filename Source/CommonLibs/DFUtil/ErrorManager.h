@@ -1,8 +1,6 @@
 #pragma once
 #include <stdarg.h>
 
-#include <stdarg.h>
-
 enum TRACETYPE
 {
 	DEFAULT  = 0,
