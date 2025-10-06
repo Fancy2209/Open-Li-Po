@@ -4,3 +4,4 @@ build/
 bin/lua
 bin/luac
 .vscode/settings.json
+.cache
