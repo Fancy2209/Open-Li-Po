@@ -1,4 +1,4 @@
-#ifndef _MSVC_VER
+#ifndef _MSC_VER
 #include <unistd.h>
 
 void Sleep(int seconds) {

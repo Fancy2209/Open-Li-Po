@@ -1,2 +1,2 @@
-#ifndef _MSVC_VER
+#ifndef _MSC_VER
 #endif
